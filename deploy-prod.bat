@@ -1,4 +1,4 @@
-#!/bin/bash
-echo "Deploying to PRODUCTION environment..."
-cp -r ./build/* ./production/
-echo "Production deploy complete."
+@echo off
+echo Deploying to PRODUCTION environment...
+xcopy /E /Y .\build\* .\production\
+echo Production deploy complete.

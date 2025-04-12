@@ -1,4 +1,4 @@
-#!/bin/bash
-echo "Deploying to STAGING environment..."
-cp -r ./build/* ./staging/
-echo "Staging deploy complete."
+@echo off
+echo Deploying to STAGING environment...
+xcopy /E /Y .\build\* .\staging\
+echo Staging deploy complete.
