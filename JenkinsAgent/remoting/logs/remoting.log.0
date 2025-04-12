@@ -1,0 +1,10 @@
+Apr 12, 2025 6:22:44 PM hudson.remoting.Launcher createEngine
+INFO: Setting up agent: Node One
+Apr 12, 2025 6:22:44 PM hudson.remoting.Engine startEngine
+INFO: Using Remoting version: 3283.v92c105e0f819
+Apr 12, 2025 6:22:44 PM org.jenkinsci.remoting.engine.WorkDirManager initializeWorkDir
+INFO: Using C:\Users\pvans\jenkins-devops\JenkinsAgent\remoting as a remoting work directory
+Apr 12, 2025 6:22:45 PM hudson.remoting.Launcher$CuiListener status
+INFO: WebSocket connection open
+Apr 12, 2025 6:22:45 PM hudson.remoting.Launcher$CuiListener status
+INFO: Connected

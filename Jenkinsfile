@@ -1,24 +1,30 @@
 pipeline {
     agent any
 
+    environment {
+        MAVEN_HOME = '/usr/share/maven' // Optional: set Maven path if needed
+    }
+
     stages {
         stage('Build') {
             steps {
-                echo 'Building the app...'
-                // Add build commands here, like: sh 'mvn clean install'
+                echo '🔨 Building the Java project with Maven...'
+                sh 'mvn clean compile'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Running tests...'
-                // Add test commands here, like: sh 'mvn test'
+                echo '✅ Running unit tests...'
+                sh 'mvn test'
             }
         }
 
         stage('Deploy to Staging') {
             steps {
-                echo 'Deploying to staging...'
+                echo '🚀 Deploying to Staging environment...'
+                // Replace with your real deploy command/script
+                sh './scripts/deploy-staging.sh'
             }
         }
 
@@ -27,14 +33,19 @@ pipeline {
                 branch 'main'
             }
             steps {
-                echo 'Deploying to production...'
+                echo '🚀 Deploying to Production environment...'
+                sh './scripts/deploy-prod.sh'
             }
         }
     }
 
     post {
+        success {
+            echo '🎉 Pipeline completed successfully!'
+        }
+
         failure {
-            echo 'The pipeline failed. Sending notifications...'
+            echo '❌ Pipeline failed! Notifying dev team or rolling back...'
         }
     }
 }
