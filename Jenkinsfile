@@ -50,4 +50,8 @@ pipeline {
             echo '❌ Pipeline failed! Notifying dev team and rolling back...'
         }
     }
+
+    when {
+        branch 'master'
+    }
 }
