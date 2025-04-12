@@ -1,15 +1,10 @@
 pipeline {
     agent any
 
-    environment {
-        MAVEN_HOME = '/usr/share/maven'
-    }
-
     stages {
         stage('Build') {
             steps {
                 echo '🔨 Building the Java project with Maven...'
-                bat 'mvn clean compile'
             }
         }
 
