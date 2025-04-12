@@ -26,7 +26,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        bat './scripts/deploy-prod.bat'
+                        bat './deploy-prod.bat'
                     } catch (err) {
                         echo "⚠️ Deployment failed: ${err}"
                         currentBuild.result = 'FAILURE'
