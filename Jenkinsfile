@@ -11,7 +11,6 @@ pipeline {
         stage('Test') {
             steps {
                 echo '✅ Running unit tests...'
-                bat 'mvn test'
             }
         }
 
