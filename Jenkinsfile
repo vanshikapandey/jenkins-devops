@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        MAVEN_HOME = '/usr/share/maven' // Optional: set Maven path if needed
+        MAVEN_HOME = '/usr/share/maven'
     }
 
     stages {
@@ -23,7 +23,6 @@ pipeline {
         stage('Deploy to Staging') {
             steps {
                 echo '🚀 Deploying to Staging environment...'
-                // Replace with your real deploy command/script
                 sh './scripts/deploy-staging.sh'
             }
         }
@@ -35,7 +34,6 @@ pipeline {
                         sh './scripts/deploy.sh'
                     } catch (err) {
                         echo "⚠️ Deployment failed: ${err}"
-                        // You can mark build as failed or just warn
                         currentBuild.result = 'FAILURE'
                     }
                 }
@@ -49,7 +47,7 @@ pipeline {
         }
 
         failure {
-            echo '❌ Pipeline failed! Notifying dev team or rolling back...'
+            echo '❌ Pipeline failed! Notifying dev team and rolling back...'
         }
     }
 }
