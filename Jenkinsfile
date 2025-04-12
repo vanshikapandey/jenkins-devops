@@ -28,13 +28,17 @@ pipeline {
             }
         }
 
-        stage('Deploy to Production') {
-            when {
-                branch 'main'
-            }
+        stage('Deploy') {
             steps {
-                echo '🚀 Deploying to Production environment...'
-                sh './scripts/deploy-prod.sh'
+                script {
+                    try {
+                        sh './scripts/deploy.sh'
+                    } catch (err) {
+                        echo "⚠️ Deployment failed: ${err}"
+                        // You can mark build as failed or just warn
+                        currentBuild.result = 'FAILURE'
+                    }
+                }
             }
         }
     }
