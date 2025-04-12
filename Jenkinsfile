@@ -23,15 +23,18 @@ pipeline {
         stage('Deploy to Staging') {
             steps {
                 echo '🚀 Deploying to Staging environment...'
-                sh './scripts/deploy-staging.sh'
+                bat './deploy-staging.bat'
             }
         }
 
-        stage('Deploy') {
+        stage('Deploy to Production') {
+             when {
+            branch 'master'
+        }
             steps {
                 script {
                     try {
-                        sh './scripts/deploy.sh'
+                        bat './scripts/deploy-prod.bat'
                     } catch (err) {
                         echo "⚠️ Deployment failed: ${err}"
                         currentBuild.result = 'FAILURE'
